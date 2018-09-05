@@ -1,0 +1,32 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <!-- add our i18n resource -->
+    <resource type="i18n" name="i18n" location="c"/>
+    
+    <!-- add our web resources -->
+    <web-resource key="c-resources" name="c Web Resources">
+        <dependency>com.atlassian.auiplugin:ajs</dependency>
+        
+        <resource type="download" name="c.css" location="/css/c.css"/>
+        <resource type="download" name="c.js" location="/js/c.js"/>
+        <resource type="download" name="images/" location="/images"/>
+
+        <context>c</context>
+    </web-resource>
+<taskType key="myFirstTask" name="My First Task" class="c.MyFirstTask">
+  <description>A simple Hello World Task</description>
+  <!-- Categories available in 3.1: "builder", "test" and "deployment"
+  <category name=""/>
+  -->
+  <configuration class="c.ExampleTaskConfigurator"/>
+  <resource type="freemarker" name="edit" location="editExampleTask.ftl"/>
+</taskType>
+    
+</atlassian-plugin>
